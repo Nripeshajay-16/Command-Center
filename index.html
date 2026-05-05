@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Command Center — My Dev OS</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Header Section -->
     <header class="header">
         <div class="header-top">
             <h1>Command Center</h1>
-            <div class="day-badge">Day <span id="day-count">1</span></div>
+            <div class="day-badge">Day <span id="day-count">5</span></div>
         </div>
         <p class="tagline">College → Gym → Code → Clients → Dream PC</p>
     </header>
 
     <!-- Main Dashboard Grid -->
     <main class="dashboard">
-        
+
         <!-- Progress Card -->
         <section class="card progress-card">
             <h2 class="card-title">📚 Learning Progress</h2>
@@ -51,21 +53,24 @@
         <section class="card ai-card">
             <h2 class="card-title">🤖 AI Stack</h2>
             <div class="ai-links">
-                <a href="#" class="ai-link claude" id="claude-journey">
+                <a href="https://claude.ai/chat/94c455dc-7b42-4808-93e0-5e60ae3d75d2" class="ai-link claude"
+                    id="claude-journey" target="_blank">
                     <span class="ai-icon">C</span>
                     <div>
                         <div class="ai-name">Journey HQ</div>
                         <div class="ai-desc">Strategy & mindset</div>
                     </div>
                 </a>
-                <a href="#" class="ai-link chatgpt" id="chatgpt-debug">
+                <a href="https://claude.ai/chat/f523d246-d093-4c5b-8290-8c5c406ad710" class="ai-link chatgpt"
+                    id="chatgpt-debug" target="_blank">
                     <span class="ai-icon">G</span>
                     <div>
                         <div class="ai-name">Code Debugger</div>
                         <div class="ai-desc">Technical help</div>
                     </div>
                 </a>
-                <a href="#" class="ai-link gemini" id="gemini-research">
+                <a href="https://gemini.google.com/app?hl=en-IN" class="ai-link gemini" id="gemini-research"
+                    target="_blank">
                     <span class="ai-icon">G</span>
                     <div>
                         <div class="ai-name">Research Tab</div>
@@ -79,15 +84,15 @@
         <section class="card money-card">
             <h2 class="card-title">💰 Money Board</h2>
             <div class="money-grid">
-                <div class="money-item">
+                <div class="money-item" onclick="addIncome('tuition')" style="cursor: pointer;">
                     <div class="money-label">Tuition</div>
                     <div class="money-value">₹<span id="tuition-amount">0</span></div>
                 </div>
-                <div class="money-item">
+                <div class="money-item" onclick="addIncome('sip')" style="cursor: pointer;">
                     <div class="money-label">SIP</div>
                     <div class="money-value">₹<span id="sip-amount">0</span></div>
                 </div>
-                <div class="money-item">
+                <div class="money-item" onclick="addIncome('freelance')" style="cursor: pointer;">
                     <div class="money-label">Freelance</div>
                     <div class="money-value">₹<span id="freelance-amount">0</span></div>
                 </div>
@@ -135,4 +140,5 @@
 
     <script src="app.js"></script>
 </body>
+
 </html>

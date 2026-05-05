@@ -1,4 +1,4 @@
-/* Reset & Base Styles */
+/* ==================== RESET & BASE ==================== */
 * {
     margin: 0;
     padding: 0;
@@ -6,75 +6,436 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: #f7f7f7;
     color: #1a1a1a;
     line-height: 1.6;
 }
 
-/* Header */
+/* ==================== HEADER ==================== */
 .header {
-    background: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
     padding: 2rem;
-    border-bottom: 1px solid #e0e0e0;
     margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 h1 {
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .day-badge {
-    background: #7F77DD;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
     color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.3);
 }
 
 .tagline {
-    color: #666;
-    font-size: 0.95rem;
+    color: rgba(255,255,255,0.9);
+    font-size: 1rem;
+    font-weight: 400;
 }
 
-/* Dashboard Grid */
+/* ==================== DASHBOARD GRID ==================== */
 .dashboard {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem 2rem;
+    padding: 0 2rem 3rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.5rem;
 }
 
-/* Cards */
+/* ==================== CARDS ==================== */
 .card {
     background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
 .card-title {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ==================== PROGRESS CARD ==================== */
+.phase-info {
+    background: #f8f9ff;
+    padding: 1rem;
+    border-radius: 12px;
     margin-bottom: 1rem;
+    border-left: 4px solid #667eea;
+}
+
+.phase-name {
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 0.25rem;
+    font-size: 1.05rem;
+}
+
+.phase-week {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.phase-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.topic-tag {
+    background: #e8eaf6;
+    color: #5e35b1;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ==================== BUTTONS ==================== */
+.btn-primary {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: #e8e8e8;
+    border-color: #ccc;
+}
+
+/* ==================== HABIT TRACKER ==================== */
+.habit-grid {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.habit-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.habit-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.habit-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.4rem;
+}
+
+.habit-cell {
+    aspect-ratio: 1;
+    background: #f5f5f5;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+
+.habit-cell:hover {
+    background: #e8e8e8;
+    border-color: #ccc;
+}
+
+.habit-cell.done {
+    background: #10b981;
+    border-color: #059669;
+    color: white;
+}
+
+.habit-cell.done:hover {
+    background: #059669;
+}
+
+.streak-info {
+    background: #fef3c7;
+    padding: 0.75rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #92400e;
+}
+
+.streak-info strong {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* ==================== AI LINKS ==================== */
+.ai-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.ai-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.ai-link:hover {
+    background: #f3f4f6;
+    border-color: #e5e7eb;
+    transform: translateX(4px);
+}
+
+.ai-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.ai-link.claude .ai-icon {
+    background: #e8eaf6;
+    color: #5e35b1;
+}
+
+.ai-link.chatgpt .ai-icon {
+    background: #e0f2f1;
+    color: #00695c;
+}
+
+.ai-link.gemini .ai-icon {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+
+.ai-name {
+    font-weight: 600;
+    font-size: 0.95rem;
     color: #1a1a1a;
 }
 
-/* Footer */
+.ai-desc {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* ==================== MONEY BOARD ==================== */
+.money-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.money-item {
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.money-label {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.25rem;
+}
+
+.money-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.money-value.total {
+    color: #10b981;
+}
+
+.pc-goal {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1.25rem;
+    border-radius: 12px;
+    color: white;
+}
+
+.pc-goal-text {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.95;
+}
+
+.progress-bar {
+    background: rgba(255,255,255,0.3);
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: white;
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.5s ease;
+}
+
+/* ==================== TIMER ==================== */
+.timer-display {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 1.5rem 0;
+    color: #667eea;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.timer-controls .btn-secondary {
+    flex: 1;
+}
+
+.timer-stats {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.timer-stats strong {
+    color: #667eea;
+    font-weight: 700;
+}
+
+/* ==================== COMING SOON ==================== */
+.coming-soon {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #666;
+}
+
+.coming-soon p:first-child {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.coming-soon-text {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* ==================== FOOTER ==================== */
 .footer {
     text-align: center;
     padding: 2rem;
-    color: #666;
+    color: #999;
     font-size: 0.9rem;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+        padding: 0 1rem 2rem;
+    }
+    
+    .header {
+        padding: 1.5rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .timer-display {
+        font-size: 2.5rem;
+    }
+    
+    .money-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .habit-row {
+        grid-template-columns: 80px 1fr;
+    }
 }
