@@ -166,7 +166,26 @@ h1 {
     border-color: #ccc;
 }
 
-/* ==================== HABIT TRACKER ==================== */
+/* History button */
+.btn-history {
+    width: 100%;
+    margin-top: 0.75rem;
+    background: #f0f0ff;
+    color: #5e35b1;
+    border: 1px solid #c5caf5;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-history:hover {
+    background: #e4e7fd;
+}
+
+/* ==================== HABIT TRACKER (THIS WEEK) ==================== */
 .habit-grid {
     display: grid;
     gap: 0.5rem;
@@ -203,6 +222,7 @@ h1 {
     align-items: center;
     justify-content: center;
     font-size: 0.75rem;
+    color: #aaa;
 }
 
 .habit-cell:hover {
@@ -210,10 +230,21 @@ h1 {
     border-color: #ccc;
 }
 
+/* TODAY: purple ring so you always know which column is today */
+.habit-cell.today {
+    border-color: #667eea;
+    color: #667eea;
+    font-weight: 700;
+}
+
 .habit-cell.done {
     background: #10b981;
     border-color: #059669;
     color: white;
+}
+
+.habit-cell.done.today {
+    border-color: #047857; /* darker green ring when today + done */
 }
 
 .habit-cell.done:hover {
@@ -232,6 +263,78 @@ h1 {
 .streak-info strong {
     font-weight: 700;
     font-size: 1.1rem;
+}
+
+/* ==================== MONTHLY HISTORY ==================== */
+.history-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    margin: 1rem 0 0.5rem;
+}
+
+/* Grid: 1 date column + 7 habit columns */
+.month-grid {
+    display: grid;
+    grid-template-columns: 52px repeat(7, 1fr);
+    gap: 3px;
+    font-size: 0.72rem;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+/* Scrollbar styling */
+.month-grid::-webkit-scrollbar { width: 4px; }
+.month-grid::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+.month-grid::-webkit-scrollbar-thumb { background: #c5caf5; border-radius: 4px; }
+
+.month-header-cell {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #999;
+    text-align: center;
+    padding: 2px 0 6px;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+}
+
+.month-date-cell {
+    font-size: 0.7rem;
+    color: #888;
+    padding: 2px 0;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.month-date-cell.today-label {
+    color: #667eea;
+    font-weight: 700;
+}
+
+.month-cell {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #f0f0f0;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.1s;
+    border: 1px solid transparent;
+}
+
+.month-cell:hover {
+    background: #e0e0e0;
+}
+
+.month-cell.done {
+    background: #10b981;
+}
+
+.month-cell.done:hover {
+    background: #059669;
 }
 
 /* ==================== AI LINKS ==================== */
@@ -272,20 +375,9 @@ h1 {
     flex-shrink: 0;
 }
 
-.ai-link.claude .ai-icon {
-    background: #e8eaf6;
-    color: #5e35b1;
-}
-
-.ai-link.chatgpt .ai-icon {
-    background: #e0f2f1;
-    color: #00695c;
-}
-
-.ai-link.gemini .ai-icon {
-    background: #fff3e0;
-    color: #ef6c00;
-}
+.ai-link.claude .ai-icon { background: #e8eaf6; color: #5e35b1; }
+.ai-link.chatgpt .ai-icon { background: #e0f2f1; color: #00695c; }
+.ai-link.gemini .ai-icon { background: #fff3e0; color: #ef6c00; }
 
 .ai-name {
     font-weight: 600;
@@ -325,9 +417,7 @@ h1 {
     color: #1a1a1a;
 }
 
-.money-value.total {
-    color: #10b981;
-}
+.money-value.total { color: #10b981; }
 
 .pc-goal {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -336,10 +426,21 @@ h1 {
     color: white;
 }
 
+.pc-goal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
 .pc-goal-text {
     font-size: 0.95rem;
-    margin-bottom: 0.75rem;
     opacity: 0.95;
+}
+
+.pc-percent {
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .progress-bar {
@@ -372,9 +473,7 @@ h1 {
     margin-bottom: 1rem;
 }
 
-.timer-controls .btn-secondary {
-    flex: 1;
-}
+.timer-controls .btn-secondary { flex: 1; }
 
 .timer-stats {
     text-align: center;
@@ -418,24 +517,10 @@ h1 {
         grid-template-columns: 1fr;
         padding: 0 1rem 2rem;
     }
-    
-    .header {
-        padding: 1.5rem;
-    }
-    
-    h1 {
-        font-size: 1.5rem;
-    }
-    
-    .timer-display {
-        font-size: 2.5rem;
-    }
-    
-    .money-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .habit-row {
-        grid-template-columns: 80px 1fr;
-    }
+    .header { padding: 1.5rem; }
+    h1 { font-size: 1.5rem; }
+    .timer-display { font-size: 2.5rem; }
+    .money-grid { grid-template-columns: 1fr; }
+    .habit-row { grid-template-columns: 80px 1fr; }
+    .month-grid { grid-template-columns: 48px repeat(7, 1fr); }
 }
